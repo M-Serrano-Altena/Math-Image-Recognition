@@ -1,0 +1,52 @@
+{
+    "special_tokens": ["<PAD>", "<START>", "<END>", "<UNK>"],
+    "commands": [
+        "\\frac", "\\sqrt", "\\sum", "\\int", "\\log", "\\sin", "\\cos", "\\tan", "\\sec", "\\csc", "\\cot",
+        "\\arcsin", "\\arccos", "\\arctan", "\\arcsec", "\\arccsc", "\\arccot", "\\sinh", "\\cosh", "\\tanh",
+        "\\arsinh", "\\arcosh", "\\artanh", "\\sinc", "\\exp", "\\lim", "\\left", "\\right", "\\cdot", "\\overline",
+        "\\underline", "\\neq", "\\leq", "\\geq", "\\forall", "\\exists", "\\in", "\\notin", "\\subset", "\\subseteq",
+        "\\supset", "\\supseteq", "\\cup", "\\cap", "\\setminus", "\\emptyset", "\\mathbb", "\\mathbf", "\\mathcal",
+        "\\mathrm", "\\mathit", "\\boldsymbol", "\\vec", "\\hat", "\\tilde", "\\bar", "\\dot", "\\ddot", "\\prime",
+        "\\partial", "\\nabla", "\\infty", "\\Re", "\\Im", "\\pm", "\\mp", "\\times", "\\div", "\\propto", "\\approx",
+        "\\cong", "\\sim", "\\equiv", "\\perp", "\\parallel", "\\angle", "\\degree", "\\circ", "\\ell", "\\vee",
+        "\\wedge", "\\land", "\\lor", "\\neg", "\\rightarrow", "\\Rightarrow", "\\leftrightarrow", "\\Leftrightarrow",
+        "\\to", "\\mapsto", "\\implies", "\\iff", "\\dots", "\\ldots", "\\cdots", "\\vdots", "\\ddots", "\\text",
+        "\\overset", "\\underset", "\\overbrace", "\\underbrace", "\\bigl", "\\bigr", "\\Bigl", "\\Bigr", "\\biggl",
+        "\\biggr", "\\Biggl", "\\Biggr", "\\bra", "\\ket", "\\langle", "\\rangle", "\\mathbb{E}", "\\mathbb{P}",
+        "\\begin{matrix}", "\\end{matrix}", "\\begin{smallmatrix}", "\\end{smallmatrix}", "\\implies", "\\therefore",
+        "\\because", "\\bigcup", "\\bigcap", "\\coprod", "\\bigwedge", "\\bigvee", "\\bigoplus", "\\bigotimes",
+        "\\biguplus", "\\hookrightarrow", "\\rightharpoonup", "\\rightharpoondown", "\\xrightarrow", "\\xleftarrow",
+        "\\rightleftharpoons", "\\xrightleftharpoons"
+    ],
+    "symbols": [
+        "+", "-", "=", "<", ">", "(", ")", "[", "]", "{", "}", ".", ",", ";", ":", "/", "|", "\\", "^", "_", "!", 
+        "@", "#", "*", "&", "$", "%", "~", "?", "'", "\"", "`", "<>", "±", "∞", "√", "∫", "∑", "∏", "π", "∂", "∇",
+        "\\alpha", "\\beta", "\\gamma", "\\delta", "\\epsilon", "\\zeta", "\\eta", "\\theta", "\\vartheta", "\\iota",
+        "\\kappa", "\\lambda", "\\mu", "\\nu", "\\xi", "\\pi", "\\rho", "\\sigma", "\\tau", "\\upsilon", "\\phi",
+        "\\varphi", "\\chi", "\\psi", "\\omega", "\\Gamma", "\\Delta", "\\Theta", "\\Lambda", "\\Xi", "\\Pi", "\\Sigma",
+        "\\Upsilon", "\\Phi", "\\Psi", "\\Omega", "\\aleph", "\\beth", "\\gimel", "\\daleth", "\\hbar", "\\ell", "\\wp",
+        "\\prime", "\\star", "\\hslash", "\\triangle", "\\vdash", "\\dashv", "\\models", "\\vDash", "\\Vdash",
+        "\\nVdash", "\\nvDash", "\\bigcup", "\\bigcap", "\\setminus", "\\bigl", "\\bigr", "\\Bigl", "\\Bigr",
+        "\\biggl", "\\biggr", "\\Biggl", "\\Biggr", "\\overleftrightarrow", "\\overrightarrow", "\\Delta"
+    ],
+    "digits": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
+    "letters": [
+        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t",
+        "u", "v", "w", "x", "y", "z", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N",
+        "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"
+    ],
+    "environments": [
+        "\\begin{equation}", "\\end{equation}", "\\begin{align}", "\\end{align}", "\\begin{array}", "\\end{array}",
+        "\\begin{bmatrix}", "\\end{bmatrix}", "\\begin{pmatrix}", "\\end{pmatrix}", "\\begin{vmatrix}", "\\end{vmatrix}",
+        "\\begin{Vmatrix}", "\\end{Vmatrix}", "\\begin{cases}", "\\end{cases}", "\\begin{align*}", "\\end{align*}",
+        "\\begin{gather}", "\\end{gather}", "\\begin{gather*}", "\\end{gather*}"
+    ],
+    "functions": [
+        "\\max", "\\min", "\\argmax", "\\argmin", "\\det", "\\dim", "\\gcd", "\\inf", "\\ker", "\\lg", "\\ln",
+        "\\sup", "\\Pr", "\\mod", "\\sinc"
+    ],
+    "operators": [
+        "\\sum", "\\prod", "\\bigcap", "\\bigcup", "\\bigodot", "\\bigoplus", "\\bigotimes", "\\coprod", "\\oint",
+        "\\int", "\\iint", "\\iiint", "\\iiiint", "\\intop", "\\idotsint"
+    ]
+}
