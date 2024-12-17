@@ -1,4 +1,6 @@
-# Handwritten Math Image Recognition *<span style="font-size: 16px; float: right; vertical-align: top; margin-right: 100px;">Marc Serrano Altena</span>*
+# Handwritten Math Image Recognition 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GOo0Oq_oL6w?si=HuhHNvEcmpt5eAYV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Het doel van het project is om een afbeelding van geschreven wiskunde te analyseren en te converteren naar latex-code met behulp van Machine Learning. Dit zou ik dan vervolgens kunnen koppelen op mijn bestaande website: [Wiskundewijs](https://wiskundewijs.com/). Specifiek heb ik daar een vergelijking oplosser gemaakt om ingevoerde vergelijkingen op te lossen (bijvoorbeeld $x^2 = 1 \longrightarrow x = 1 \ \vee \ x = -1$).
 
@@ -29,16 +31,30 @@ En van deze notebooks zijn de bovenste twee de belangrijkste.
 
 In de *Double English*, *EMNIST + English font*, *EMNIST* en *English font* notebooks worden verschillende modellen getraind om losse letters en cijfers correct te herkennen. Elke notebook gebruikt andere (combinaties van) datasets. Het model dat het beste heeft gepresteerd met eigen handgeschreven en getypte letters voorspellen is het *Double English* model:
 
-<img src="models results\Result Double English model handwritten letters upper.png" alt="Handwritten Uppercase" width="50%" style="display:inline-block; margin-right:2%;" />
-<img src="models results\Result Double English model typed letters upper.png" alt="Typed Uppercase" width="45.75%" style="display:inline-block;" />
+<img src="models results\Result Double English model handwritten letters upper.png" alt="Handwritten Uppercase" width="48%" style="display:inline-block; margin-right:2%;" />
+<img src="models results\Result Double English model typed letters upper.png" alt="Typed Uppercase" width="48%" style="display:inline-block;" />
 
-<br><br>
+<br>
 
-De CROHME notebook is een encoder-decoder model met een ViT als encoder een Gated Recurrent Unit (GRU) als decoder. Het model had veel potentie, maar uiteindelijk is het niet binnen de tijd gelukt om er zinvolle voorspellingen uit te krijgen.
-
-De *Math Symbols* notebook probeert de voorspellingen van losstaande letters en cijfers uit de *Double English* model uit te breiden. Zodat behalve letters en cijfers ook wiskundige tekens zoals $+$, $-$, $*$, $\sqrt{}$ en $\int$ zouden worden herkend. Maar ook hier zijn geen zinvolle voorspellingen uit gekomen.
+De *Math Symbols* notebook probeert de voorspellingen van losstaande letters en cijfers uit de *Double English* model uit te breiden. Zodat behalve letters en cijfers ook wiskundige tekens zoals $+$, $-$, $*$, $\sqrt{}$ en $\int$ zouden worden herkend. Maar hier zijn uiteindelijk geen zinvolle voorspellingen uit gekomen.
 
 In de "Working Example" folder zijn twee notebooks van het internet om een idee te krijgen van hoe een werkend model er uit zou kunnen zien. Volledige credit gaat naar [Dohyeong Kim](https://dohyeongkim.medium.com/image-to-latex-using-vision-transformer-13fc4ce253d7).
+
+<br>
+
+De CROHME notebook is een encoder-decoder model met een ViT als encoder een Gated Recurrent Unit (GRU) als decoder. De eerste versie van het model overfitte heel erg. Dit is ook te zien aan de (bijna) perfecte validation accuracy. Het model krijgt namelijk de correct latex tokens als input mee zodat het (vooral aan het begin) logische verbanden kan leren. Maar het model nam deze input gewoon rechtstreeks over en keek niet eens naar de afbeeldingen. Bij afbeeldingen zonder de correct latex tokens bleef het steeds de *start* token herhalen. Dit probleem wordt ook wel *exposure bias* genoemt.
+
+<img src="models performance\CROHME model val_accuracy.png" width="48%">
+
+Om dit probleem te vermijden, is er scheduled sampling toegevoegd. Dit houdt in dat niet alle inputs de correcte inputs zijn, maar een deel de voorspellingen van het model zelf. Ook is hier de tokenizer verandert van de meer algemene naar de specifiekere latex tokenizer van mij. Dit loste de *exposure bias* van eerst op, maar de voorspellingen waren niet veel zeggend.
+
+Als laatst viel mij op dat het model de *gradients* van de kernel en weights blijkbaar niet berekend werden. Dit kan gebeuren als er niet-verbonden variabelen in het model zijn of als er niet-differentieerbare functies worden gebruikt, waardoor de gradients tijdens backpropagation niet correct terugvloeien. Om dit probleem op te lossen, heb ik de niet-differentieerbare *argmax* vervangen met de *gumbel-softmax*. In plaats van een "harde" keuze, geeft de gumbel-softmax een waarschijnlijkheidsverdeling. Dus in plaats van een harde keuze te maken voor de volgende voorspelde token, traint het model met waarschijnlijkheidsverdelingen. Helaas heeft deze verandering niet geholpen met het bepalen van de *gradients*. Hierdoor zijn de voorspelling uiteindelijk niet zinvol geworden.
+
+Het model had dus wel veel potentie, maar uiteindelijk is het niet binnen de tijd gelukt om er zinvolle voorspellingen uit te krijgen. Voor de toekomst is het een goed idee om de verhouding van correct tokens en model voorspellingen te laten varieëren in plaats van constant voor de hele training. Dus een hoger percentage correcte tokens aan het begin om de structuren beter te leren, en naarmate het langer traint, steeds meer eigen voorspellingen te gebruiken om *exposure bias* tegen te gaan. En verder zou er gekeken kunnen worden of er toch ergens een variabele niet verbonden is waardoor backpropagation niet goed kan werken. 
+
+<br>
+
+
 
 ### Overige data
 
