@@ -1,6 +1,6 @@
 # Handwritten Math Image Recognition 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GOo0Oq_oL6w?si=HuhHNvEcmpt5eAYV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[![Programeer Project Screencast](https://img.youtube.com/vi/GOo0Oq_oL6w/0.jpg)](https://www.youtube.com/watch?v=GOo0Oq_oL6w)
 
 Het doel van het project is om een afbeelding van geschreven wiskunde te analyseren en te converteren naar latex-code met behulp van Machine Learning. Dit zou ik dan vervolgens kunnen koppelen op mijn bestaande website: [Wiskundewijs](https://wiskundewijs.com/). Specifiek heb ik daar een vergelijking oplosser gemaakt om ingevoerde vergelijkingen op te lossen (bijvoorbeeld $x^2 = 1 \longrightarrow x = 1 \ \vee \ x = -1$).
 
